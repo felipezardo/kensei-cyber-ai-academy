@@ -41,7 +41,22 @@ Bem-vindo ao projeto **Kensei Cyber AI Academy**! Este repositório reúne mater
    ```
 4. Explore as pastas e execute os scripts de exemplo.
 
-## 🧩 Boas práticas
+## 🧰 Scripts e Ferramentas Disponíveis
+
+Nossos scripts focam na construção de uma base sólida de Python, aplicando conceitos fundamentais como modularização (`def main()`), laços de repetição amigáveis (`while True`), validação de dados e tratamento de exceções (`try/except`).
+
+- **`cyber_quiz.py`**: Um quiz interativo de cibersegurança. Valida entradas estritamente (A, B ou C), possui contagem dinâmica de pontuação e permite jogar múltiplas vezes sem reiniciar o script.
+- **`password_generator.py`**: Gerador de senhas customizáveis e seguras. O usuário define o tamanho e os conjuntos de caracteres (maiúsculas, números, símbolos), com validação para garantir a criação de senhas fortes.
+- **`shopping_list.py`**: Gerenciador de lista de compras via terminal com uma interface aprimorada (uso de emojis). Evita falhas (crashes) se o usuário digitar letras ao invés de números na hora de remover itens.
+- **`converter.py`**: Conversor bidirecional de temperaturas (Celsius ↔ Fahrenheit). Completamente à prova de erros de digitação (letras no lugar de números).
+- **`ola.py`**: Script introdutório de saudação em loop, que ensina como lidar com entradas vazias e formatação de strings (`f-strings`).
+
+### 💡 O que você aprenderá explorando os códigos?
+- Implementação da estrutura `if __name__ == "__main__":`.
+- Manipulação segura de listas e índices em Python.
+- Interação contínua com o usuário protegendo o programa contra quebras (crashes).
+
+##  Boas práticas
 
 - Mantenha o código modular e documentado.
 - Use controle de versão e branches para recursos/bugfix.
@@ -56,71 +71,3 @@ Bem-vindo ao projeto **Kensei Cyber AI Academy**! Este repositório reúne mater
 ## 📄 Licença
 
 Este projeto está licenciado sob MIT License (ou outra, se preferir).
-
----
-
-> Se quiser, posso ajustar o README para um caso de uso específico (por exemplo, laboratório de análise de malware, sistema de alerta SOC, API de detecção de intrusão etc.).
-
-## Programa de Lista de Compras
-
-Este é um programa simples em Python para gerenciar uma lista de compras, com funcionalidades de adicionar, ver, remover itens e sair.
-
-### Código e Explicação Linha a Linha
-
-```python
-def main():
-    shopping_list = []  # Inicializa uma lista vazia para armazenar os itens de compras
-    
-    while True:  # Loop infinito até o usuário escolher sair
-        print("\nMenu da Lista de Compras:")  # Exibe o menu de opções
-        print("1. Adicionar item")
-        print("2. Ver itens")
-        print("3. Remover item")
-        print("4. Sair")
-        
-        choice = input("Escolha uma opção (1-4): ").strip()  # Lê a escolha do usuário e remove espaços extras
-        
-        if choice == '1':  # Se a escolha for adicionar item
-            item = input("Digite o item a adicionar: ").strip()  # Lê o nome do item
-            if item:  # Verifica se o item não está vazio
-                shopping_list.append(item)  # Adiciona o item à lista
-                print(f"'{item}' adicionado à lista.")  # Confirma a adição
-            else:
-                print("Item não pode ser vazio.")  # Mensagem de erro se vazio
-        
-        elif choice == '2':  # Se a escolha for ver itens
-            if shopping_list:  # Se a lista não estiver vazia
-                print("\nItens na lista:")
-                for i, item in enumerate(shopping_list, 1):  # Enumera os itens a partir de 1
-                    print(f"{i}. {item}")  # Exibe cada item numerado
-            else:
-                print("A lista está vazia.")  # Mensagem se a lista estiver vazia
-        
-        elif choice == '3':  # Se a escolha for remover item
-            if shopping_list:  # Se a lista não estiver vazia
-                print("\nItens na lista:")
-                for i, item in enumerate(shopping_list, 1):
-                    print(f"{i}. {item}")  # Mostra a lista numerada
-                index_str = input("Digite o número do item a remover: ").strip()  # Lê o número do item
-                try:
-                    index = int(index_str) - 1  # Converte para inteiro e ajusta para índice 0-based
-                    if 0 <= index < len(shopping_list):  # Verifica se o índice é válido
-                        removed_item = shopping_list.pop(index)  # Remove o item e o armazena
-                        print(f"'{removed_item}' removido da lista.")  # Confirma a remoção
-                    else:
-                        print("Número inválido.")  # Erro se o número estiver fora do range
-                except ValueError:  # Se a entrada não for um número
-                    print("Por favor, digite um número válido.")
-            else:
-                print("A lista está vazia.")  # Mensagem se a lista estiver vazia
-        
-        elif choice == '4':  # Se a escolha for sair
-            print("Saindo...")  # Mensagem de saída
-            break  # Sai do loop while
-        
-        else:  # Se a escolha for inválida
-            print("Opção inválida. Tente novamente.")  # Mensagem de erro
-
-if __name__ == "__main__":  # Verifica se o script está sendo executado diretamente
-    main()  # Chama a função principal
-```

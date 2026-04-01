@@ -30,27 +30,39 @@ def main():
         }
     ]
 
-    pontuacao = 0
+    while True:
+        pontuacao = 0
 
-    print("Quiz de Cibersegurança")
-    print("Responda com A, B ou C.\n")
+        print("\nQuiz de Cibersegurança")
+        print("Responda com A, B ou C.\n")
 
-    for i, p in enumerate(perguntas, 1):
-        print(f"Pergunta {i}: {p['pergunta']}")
-        for opcao in p['opcoes']:
-            print(opcao)
-        resposta = input("Sua resposta: ").strip().upper()
-        if resposta == p['resposta']:
-            pontuacao += 1
-            print("Correto!\n")
+        for i, p in enumerate(perguntas, 1):
+            print(f"Pergunta {i}: {p['pergunta']}")
+            for opcao in p['opcoes']:
+                print(opcao)
+            
+            while True:
+                resposta = input("Sua resposta: ").strip().upper()
+                if resposta in ['A', 'B', 'C']:
+                    break
+                print("Entrada inválida. Por favor, digite A, B ou C.")
+                
+            if resposta == p['resposta']:
+                pontuacao += 1
+                print("Correto!\n")
+            else:
+                print(f"Incorreto. A resposta correta é {p['resposta']}.\n")
+
+        print(f"Sua pontuação: {pontuacao}/{len(perguntas)}")
+        if pontuacao >= 3:
+            print("Parabéns! Você passou.")
         else:
-            print(f"Incorreto. A resposta correta é {p['resposta']}.\n")
-
-    print(f"Sua pontuação: {pontuacao}/5")
-    if pontuacao >= 3:
-        print("Parabéns! Você passou.")
-    else:
-        print("Você não passou. Tente novamente.")
+            print("Você não passou. Tente novamente.")
+            
+        jogar_novamente = input("\nDeseja jogar novamente? (s/n): ").strip().lower()
+        if jogar_novamente != 's':
+            print("Obrigado por jogar!")
+            break
 
 if __name__ == "__main__":
     main()
