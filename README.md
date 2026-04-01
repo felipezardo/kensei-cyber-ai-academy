@@ -60,3 +60,67 @@ Este projeto está licenciado sob MIT License (ou outra, se preferir).
 ---
 
 > Se quiser, posso ajustar o README para um caso de uso específico (por exemplo, laboratório de análise de malware, sistema de alerta SOC, API de detecção de intrusão etc.).
+
+## Programa de Lista de Compras
+
+Este é um programa simples em Python para gerenciar uma lista de compras, com funcionalidades de adicionar, ver, remover itens e sair.
+
+### Código e Explicação Linha a Linha
+
+```python
+def main():
+    shopping_list = []  # Inicializa uma lista vazia para armazenar os itens de compras
+    
+    while True:  # Loop infinito até o usuário escolher sair
+        print("\nMenu da Lista de Compras:")  # Exibe o menu de opções
+        print("1. Adicionar item")
+        print("2. Ver itens")
+        print("3. Remover item")
+        print("4. Sair")
+        
+        choice = input("Escolha uma opção (1-4): ").strip()  # Lê a escolha do usuário e remove espaços extras
+        
+        if choice == '1':  # Se a escolha for adicionar item
+            item = input("Digite o item a adicionar: ").strip()  # Lê o nome do item
+            if item:  # Verifica se o item não está vazio
+                shopping_list.append(item)  # Adiciona o item à lista
+                print(f"'{item}' adicionado à lista.")  # Confirma a adição
+            else:
+                print("Item não pode ser vazio.")  # Mensagem de erro se vazio
+        
+        elif choice == '2':  # Se a escolha for ver itens
+            if shopping_list:  # Se a lista não estiver vazia
+                print("\nItens na lista:")
+                for i, item in enumerate(shopping_list, 1):  # Enumera os itens a partir de 1
+                    print(f"{i}. {item}")  # Exibe cada item numerado
+            else:
+                print("A lista está vazia.")  # Mensagem se a lista estiver vazia
+        
+        elif choice == '3':  # Se a escolha for remover item
+            if shopping_list:  # Se a lista não estiver vazia
+                print("\nItens na lista:")
+                for i, item in enumerate(shopping_list, 1):
+                    print(f"{i}. {item}")  # Mostra a lista numerada
+                index_str = input("Digite o número do item a remover: ").strip()  # Lê o número do item
+                try:
+                    index = int(index_str) - 1  # Converte para inteiro e ajusta para índice 0-based
+                    if 0 <= index < len(shopping_list):  # Verifica se o índice é válido
+                        removed_item = shopping_list.pop(index)  # Remove o item e o armazena
+                        print(f"'{removed_item}' removido da lista.")  # Confirma a remoção
+                    else:
+                        print("Número inválido.")  # Erro se o número estiver fora do range
+                except ValueError:  # Se a entrada não for um número
+                    print("Por favor, digite um número válido.")
+            else:
+                print("A lista está vazia.")  # Mensagem se a lista estiver vazia
+        
+        elif choice == '4':  # Se a escolha for sair
+            print("Saindo...")  # Mensagem de saída
+            break  # Sai do loop while
+        
+        else:  # Se a escolha for inválida
+            print("Opção inválida. Tente novamente.")  # Mensagem de erro
+
+if __name__ == "__main__":  # Verifica se o script está sendo executado diretamente
+    main()  # Chama a função principal
+```
